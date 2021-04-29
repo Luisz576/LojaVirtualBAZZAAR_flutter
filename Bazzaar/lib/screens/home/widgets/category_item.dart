@@ -1,4 +1,5 @@
 import 'package:Bazzaar/models/category.dart';
+import 'package:Bazzaar/screens/busca/busca_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -20,8 +21,11 @@ class CategoryItem extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                //TODO: TROCA TELA
-                print(category.categoryName);
+                Navigator.push(
+                  context, MaterialPageRoute(
+                    builder: (context) => BuscaScreen(filter: category, isCategoria: true,),
+                  )
+                );
               },
               child: Container(
                 height: animation.value * radius,

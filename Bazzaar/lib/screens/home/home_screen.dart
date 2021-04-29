@@ -41,24 +41,16 @@ class _HomeScreenState extends State<HomeScreen>
           ),
         ),
         backgroundColor: Color.fromRGBO(240, 208, 41, 1.0),
-        //secundary color = c15233 -> 193, 82, 51
       ),
       body: Container(
-        child: AnimatedBuilder(
-          animation: _animationController,
-          builder: _builderAnimation,
+        child: ListView(
+          children: [
+            SearchCamp(),
+            CategoryView(_animationController),
+            ProductsView(),
+          ],
         ),
       ),
-    );
-  }
-
-  Widget _builderAnimation(BuildContext context, Widget child){
-    return ListView(
-      children: [
-        SearchCamp(),
-        CategoryView(_animationController),
-        ProductsView(_animationController),
-      ],
     );
   }
 

@@ -35,6 +35,13 @@ class _CategoryViewState extends State<CategoryView> {
 
   @override
   Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: _animationBuilder,
+    );
+  }
+
+  Widget _animationBuilder(BuildContext context, Widget child){
 
     final screenSize = MediaQuery.of(context).size;
 

@@ -1,24 +1,34 @@
 import 'package:Bazzaar/models/produto.dart';
-import 'package:Bazzaar/screens/home/widgets/produto_item.dart';
 import 'package:Bazzaar/services/database.dart';
+import 'package:Bazzaar/utils/animationBuilderProdutos.dart';
 import 'package:flutter/material.dart';
 
 class ProductsView extends StatefulWidget {
-
-  final AnimationController animationController;
-
-  ProductsView(this.animationController);
-
   @override
-  _ProductsViewState createState() => _ProductsViewState(animationController);
+  _ProductsViewState createState() => _ProductsViewState();
 }
 
-class _ProductsViewState extends State<ProductsView> {
+class _ProductsViewState extends State<ProductsView> 
+    with SingleTickerProviderStateMixin{
 
-  final AnimationController animationController;
   Database database = Database();
 
-  _ProductsViewState(this.animationController);
+  AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2)
+    );
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,22 +48,18 @@ class _ProductsViewState extends State<ProductsView> {
           FutureBuilder<List<Produto>>(
             initialData: null,
             future: database.getProdutos(),
-            builder: (context, snapshot) {
-              int counter = 0;
-              if(snapshot.hasData && !snapshot.hasError)
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: snapshot.data.map((produto) {
-                    if(produto.off > 0){
-                      counter++;
-                      return ProdutoItem(produto: produto, isRight: (counter % 2 == 0),animation: animationController);
-                    }else
-                      return Container();
-                  }).toList(),
+            builder: (BuildContext context, AsyncSnapshot<List<Produto>> snapshot) {
+              if(snapshot.hasData && !snapshot.hasError){
+                animationController.forward();
+                return AnimatedBuilder(
+                  animation: animationController,
+                  builder: (context, child) {
+                    return animationBuilderProdutos(context, snapshot.data, animationController, true);
+                  },
                 );
-              else if(snapshot.hasError)
-                return Text("Não foi possível carregar os produtos!");
-              return Align(
+              }else if(snapshot.hasError)
+                return const Text("Não foi possível carregar os produtos!");
+              return const Align(
                 alignment: Alignment.center,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
@@ -65,4 +71,5 @@ class _ProductsViewState extends State<ProductsView> {
       ),
     );
   }
+
 }

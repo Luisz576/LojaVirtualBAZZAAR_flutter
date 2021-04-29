@@ -14,5 +14,9 @@ class Produto{
     id = map['id'];
     price = map['price'];
   }
+
+  double getNewPrice(){
+    return price - (price * off / 100);
+  }
   
 }

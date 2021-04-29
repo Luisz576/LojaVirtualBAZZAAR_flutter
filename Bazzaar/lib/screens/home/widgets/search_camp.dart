@@ -1,6 +1,15 @@
+import 'package:Bazzaar/screens/busca/busca_screen.dart';
 import 'package:flutter/material.dart';
 
-class SearchCamp extends StatelessWidget {
+class SearchCamp extends StatefulWidget {
+  @override
+  _SearchCampState createState() => _SearchCampState();
+}
+
+class _SearchCampState extends State<SearchCamp> {
+  
+  final TextEditingController inputController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,6 +27,7 @@ class SearchCamp extends StatelessWidget {
           children: [
             Expanded(
               child: TextField(
+                controller: inputController,
                 maxLength: 26,
                 decoration: InputDecoration(
                   hintText: "Buscar",
@@ -44,8 +54,29 @@ class SearchCamp extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: (){
-                  //TODO: TROCA TELA
-                  print("buscar");
+                  if(inputController.text.trim().isNotEmpty)
+                    Navigator.push(
+                      context, MaterialPageRoute(
+                        builder: (context) => BuscaScreen(filter: inputController.text.trim(), isCategoria: false,),
+                      )
+                    );
+                  else
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Preencha o campo de busca!'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      }
+                    );
                 },
               ),
             ),
