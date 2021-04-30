@@ -1,5 +1,5 @@
 import 'package:Bazzaar/models/produto.dart';
-import 'package:Bazzaar/screens/home/widgets/produto_item.dart';
+import 'package:Bazzaar/utils/widgets/produto_item.dart';
 import 'package:flutter/material.dart';
 
 Widget animationBuilderProdutos(BuildContext context, List<Produto> data, AnimationController animationController, bool onlyPromo){
