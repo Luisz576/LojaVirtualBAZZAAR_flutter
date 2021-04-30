@@ -1,13 +1,20 @@
+import 'package:Bazzaar/models/produto.dart';
+import 'package:Bazzaar/screens/produto/produto_screen.dart';
 import 'package:flutter/material.dart';
 
 class ButtonComprar extends StatelessWidget{
+
+  final Produto produto;
+
+  ButtonComprar({@required this.produto});
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: (){
-        //TODO: OPEN PAGE
-        print("Comprar");
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => ProdutoScreen(produto: produto),
+        ));
       },
       padding: EdgeInsets.zero,
       child: Card(

@@ -13,7 +13,7 @@ Widget animationBuilderProdutos(BuildContext context, List<Produto> data, Animat
         return ProdutoItem(
           produto: produto,
           controller: animationController.view,
-          isRight: !(counter % 2 == 0),
+          isRight: (counter % 2 == 0),
           imageHeight: screenSize.height * 0.35,
           imageWidth: screenSize.width * 0.55,
           marginLeftOrRightCard: screenSize.width * 0.35,

@@ -31,26 +31,12 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("BAZZAAR",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-            fontSize: 28,
-          ),
-        ),
-        backgroundColor: Color.fromRGBO(240, 208, 41, 1.0),
-      ),
-      body: Container(
-        child: ListView(
-          children: [
-            SearchCamp(),
-            CategoryView(_animationController),
-            ProductsView(),
-          ],
-        ),
-      ),
+    return ListView(
+      children: [
+        SearchCamp(),
+        CategoryView(_animationController),
+        ProductsView(),
+      ],
     );
   }
 

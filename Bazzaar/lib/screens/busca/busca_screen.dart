@@ -1,4 +1,3 @@
-import 'package:Bazzaar/models/category.dart';
 import 'package:Bazzaar/models/produto.dart';
 import 'package:Bazzaar/services/database.dart';
 import 'package:Bazzaar/utils/animationBuilderProdutos.dart';

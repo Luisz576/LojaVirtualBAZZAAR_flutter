@@ -19,7 +19,7 @@ class Database{
       "categoria": "juv",
       "obs": "Disponível em todos os tamanhos",
       "off": 0,
-      "id": 1,
+      "id": 2,
       "price": 120.0,
       "image_source": "images/roupa-branca.jpg"
     }),
@@ -29,7 +29,7 @@ class Database{
       "categoria": "fem",
       "obs": "Disponível em todos os tamanhos",
       "off": 15,
-      "id": 1,
+      "id": 3,
       "price": 200.0,
       "image_source": "images/roupa-branca-fem.jpg"
     }),
@@ -39,7 +39,7 @@ class Database{
       "categoria": "fem",
       "obs": "Disponível em todos os tamanhos",
       "off": 30,
-      "id": 1,
+      "id": 4,
       "price": 350.0,
       "image_source": "images/roupa-branca-fem.jpg"
     }),
@@ -49,9 +49,19 @@ class Database{
       "categoria": "fem",
       "obs": "Disponível em todos os tamanhos",
       "off": 20,
-      "id": 1,
+      "id": 5,
       "price": 140.0,
       "image_source": "images/roupa-branca-fem.jpg"
+    }),
+    Produto.fromMap({
+      "nome": "Camisa branca 6",
+      "descricao": "100% seda\n101% de conforto",
+      "categoria": "masc",
+      "obs": "Disponível em todos os tamanhos",
+      "off": 0,
+      "id": 6,
+      "price": 100.0,
+      "image_source": "images/roupa-branca.jpg"
     })
   ];
 
